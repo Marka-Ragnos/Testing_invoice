@@ -1,0 +1,11 @@
+.sidebar {
+	display: flex;
+   height: 100vh;
+   position: sticky;
+   top: 0;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   background-color: rgb(109, 35, 35);
+   color: rgb(117, 170, 121);
+}
