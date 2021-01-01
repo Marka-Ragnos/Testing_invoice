@@ -1,18 +1,17 @@
 import React from "react";
 import "./avatar.css";
+import { Container, Row, Col, Image} from "react-bootstrap";
+
 
 function Avatar() {
    return (
-      <>
-         <div className="avatar">
-            <img
-               src="../../../avatar-primer.jpg"
-               alt="user"
-               width="900"
-               height="900"
-            />
-         </div>
-      </>
+      <Container>
+         <Row className="justify-content-center avatar">
+            <Col xs={8} md={8}>
+               <Image src="/avatar-primer.jpg" roundedCircle fluid />
+            </Col>
+         </Row>
+      </Container>
    );
 }
 

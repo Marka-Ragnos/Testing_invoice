@@ -1,0 +1,51 @@
+.toggle-button {
+   display: none;
+   background-color: transparent;
+   border: none;
+   outline: none;
+   padding: 0;
+	cursor: pointer;
+}
+
+.toggle-button::before,
+.toggle-button::after {
+   content: "";
+   display: block;
+   width: 24px;
+   height: 2px;
+   margin-bottom: 4px;
+   background: #e0e0e0;
+   transition: transform 0.3s;
+}
+
+.toggle-button-line {
+   display: block;
+   width: 24px;
+   height: 2px;
+   margin-bottom: 4px;
+   background: #e0e0e0;
+   opacity: 1;
+   transition: 0.8s;
+}
+
+.toggle-button--active .toggle-button-line {
+   opacity: 0;
+   transition: 0s;
+}
+
+.toggle-button--active .toggle-button::after {
+   width: 24px;
+   transform: translateY(-6px) rotate(-135deg);
+}
+
+.toggle-button--active .toggle-button::before {
+   transform: translateY(6px) rotate(135deg);
+}
+
+@media (max-width: 768px) {
+   .toggle-button {
+		display: block;
+		align-self: flex-end;
+		margin-right: 20px;
+   }
+}

@@ -1,9 +1,5 @@
-.avatar {
-   width: 100px;
-   height: 100px;
-   margin-top: 20px;
-   background-color:rgb(158, 185, 115);
+@media (max-width: 768px) {
+   .avatar.row {
+      display: none;
+   }
 }
-
-/* .avatar img {
-} */

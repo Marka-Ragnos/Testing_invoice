@@ -1,0 +1,17 @@
+.sign-in-page {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+   padding: 40px;
+}
+
+.sign-in-page h1 {
+   text-align: center;
+   padding-top: 40px;
+	padding-bottom: 40px;
+	font-size: 2rem;
+}
+
+.sign-in-page__form {
+	width: 80%;
+}

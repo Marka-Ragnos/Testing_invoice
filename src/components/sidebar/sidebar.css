@@ -1,5 +1,5 @@
 .sidebar {
-	display: flex;
+   display: flex;
    height: 100vh;
    position: sticky;
    top: 0;
@@ -8,4 +8,10 @@
    align-items: center;
    background-color: rgb(109, 35, 35);
    color: rgb(117, 170, 121);
+}
+
+@media (max-width: 768px) {
+   .sidebar {
+		height: 100%;
+   }
 }

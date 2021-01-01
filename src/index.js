@@ -1,13 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Router } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import App from "./components/app/app";
+import "bootstrap/dist/css/bootstrap.min.css";
 import reportWebVitals from "./reportWebVitals";
 
+const history = createBrowserHistory();
+
 ReactDOM.render(
-   <React.StrictMode>
-      <App />
-   </React.StrictMode>,
+   <Router history={history}>
+      <React.StrictMode>
+         <App />
+      </React.StrictMode>
+   </Router>,
    document.getElementById("root")
 );
 
