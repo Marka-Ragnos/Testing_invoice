@@ -1,14 +1,22 @@
 import React from "react";
-import "./not-found-page.css";
+import { NavLink } from "react-router-dom";
 
-function NotFoundPage() {
+const NotFoundPage = () => {
    return (
       <div className="not-found-page">
-         <div class="not-found-page__content">
-            <a href="/">Перейти к главной странице</a>
+         <div className="not-found-page__wrap">
+            <div className="not-found-page__logo">
+               <h1>404</h1>
+               <p> Sorry - File not Found!</p>
+               <div className="not-found-page__sub">
+                  <p>
+                     <NavLink to="/">Вернуться на главную</NavLink>
+                  </p>
+               </div>
+            </div>
          </div>
       </div>
    );
-}
+};
 
 export default NotFoundPage;

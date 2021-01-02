@@ -1,23 +1,18 @@
-import React, { useState } from "react";
-import "./toggle-button.css";
+import React from "react";
 
-function ToggleButtonExample() {
-   const [selected, setSelected] = useState(false);
+const ToggleButton = ({ toggleMenu, isOpen }) => {
+   console.log(isOpen);
 
    return (
-      <>
-         <button
-            className={
-               selected ? `toggle-button toggle-button--active` : `toggle-button`
-            }
-            onClick={() => {
-               setSelected(!selected);
-            }}
-         >
-            <span className="toggle-button-line"></span>
-         </button>
-      </>
+      <button
+         className={`toggle-button ${isOpen ? "toggle-button--active" : null}`}
+         onClick={() => {
+            toggleMenu(!isOpen);
+         }}
+      >
+         <span className="toggle-button-line"></span>
+      </button>
    );
-}
+};
 
-export default ToggleButtonExample;
+export default ToggleButton;

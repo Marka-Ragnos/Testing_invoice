@@ -1,8 +1,7 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
-import "./sign-in-page.css";
 
-function SignInPage() {
+const SignInPage = () => {
    return (
       <div className="sign-in-page">
          <h1>You are not logged in, please register</h1>
@@ -28,6 +27,6 @@ function SignInPage() {
          </Form>
       </div>
    );
-}
+};
 
 export default SignInPage;

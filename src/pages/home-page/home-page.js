@@ -1,7 +1,6 @@
 import React from "react";
-import "./home-page.css";
 
-function HomePage() {
+const HomePage = () => {
    return (
       <div className="home-page px-2">
          <h1 className="text-center">Home Page</h1>
@@ -82,6 +81,6 @@ function HomePage() {
          </p>
       </div>
    );
-}
+};
 
 export default HomePage;
