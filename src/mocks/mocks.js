@@ -1,11 +1,11 @@
-import {getRandomInRange, uniqueID} from '../utils';
+import { getRandomInRange, uniqueID, addTotal } from "../utils";
 
-const archiveBuyers = [
+const data = [
    {
       id: uniqueID(),
       name: `Anakin Skywalker`,
       check: getRandomInRange(100, 1000),
-      purchases: getRandomInRange(1, 20),
+		purchases: getRandomInRange(1, 20),
    },
    {
       id: uniqueID(),
@@ -92,5 +92,7 @@ const archiveBuyers = [
       purchases: getRandomInRange(1, 20),
    },
 ];
+
+const archiveBuyers = addTotal(data);
 
 export default archiveBuyers;

@@ -1,10 +1,11 @@
 import React from "react";
 import Sidebar from "../sidebar/sidebar";
 import HomePage from "../../pages/home-page/home-page";
-import Buyers from "../../pages/buyers-page/buyers-page";
+import BuyersPage from "../../pages/buyers-page/buyers-page";
 import NotFoundPage from "../../pages/not-found-page/not-found-page";
 import AppWrapper from "./app-wrapper";
 import SignInPage from "../../pages/sign-in-page/sign-in-page";
+import IndividualBuyerPage from "../../pages/individual-buyer-page/individual-buyer-page";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 
 const App = () => {
@@ -15,7 +16,12 @@ const App = () => {
                <Switch>
                   <Route path="/" exact component={HomePage} />
                   <Route path="/sign-in-page" exact component={SignInPage} />
-                  <Route path="/buyers-page" exact component={Buyers} />
+                  <Route path="/buyers-page" exact component={BuyersPage} />
+                  <Route
+                     path="/buyers-page/1"
+                     exact
+                     component={IndividualBuyerPage}
+                  />
                   <Route component={NotFoundPage} />
                </Switch>
             </AppWrapper>

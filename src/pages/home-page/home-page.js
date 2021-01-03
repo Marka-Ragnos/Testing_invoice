@@ -3,7 +3,7 @@ import React from "react";
 const HomePage = () => {
    return (
       <div className="home-page px-2">
-         <h1 className="text-center">Home Page</h1>
+         <h1 className="text-center">Главная</h1>
          <p>
             Ea culpa enim ipsum reprehenderit cupidatat dolor ipsum culpa.
             Occaecat ut nulla enim enim velit duis. Ut nulla labore proident
