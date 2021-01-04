@@ -6,6 +6,7 @@ import NotFoundPage from "../../pages/not-found-page/not-found-page";
 import AppWrapper from "./app-wrapper";
 import SignInPage from "../../pages/sign-in-page/sign-in-page";
 import IndividualBuyerPage from "../../pages/individual-buyer-page/individual-buyer-page";
+import TerminalsPage from "../../pages/terminals-page/terminals-page";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 
 const App = () => {
@@ -16,9 +17,10 @@ const App = () => {
                <Switch>
                   <Route path="/" exact component={HomePage} />
                   <Route path="/sign-in-page" exact component={SignInPage} />
+                  <Route path="/terminals-page" exact component={TerminalsPage} />
                   <Route path="/buyers-page" exact component={BuyersPage} />
                   <Route
-                     path="/buyers-page/1"
+                     path="/buyers/1"
                      exact
                      component={IndividualBuyerPage}
                   />

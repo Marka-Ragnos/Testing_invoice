@@ -4,7 +4,7 @@ const ToggleButton = ({ toggleMenu, isOpen }) => {
 
    return (
       <button
-         className={`toggle-button ${isOpen ? "toggle-button--active" : null}`}
+         className={`toggle-button ${isOpen ? "toggle-button--active" : ""}`}
          onClick={() => {
             toggleMenu(!isOpen);
          }}

@@ -6,7 +6,7 @@ const SidebarContent = ({ isOpen }) => {
    return (
       <Container
          className={`sidebar-content ${
-            isOpen ? "sidebar-content--open" : null
+            isOpen ? "sidebar-content--open" : ""
          }`}
       >
          <Row className="justify-content-center avatar">

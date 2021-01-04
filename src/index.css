@@ -1,8 +1,20 @@
+:root {
+   --text-black: #000000;
+   --text-white: #ffffff;
+   --text-link: #352a0b;
+   --background-1: #347fc4;
+   --background-2: #989fce;
+   --background-3: #7d6b91;
+   --background-4: #5d536b;
+   --background-5: #272838;
+}
+
 .navigation a,
-.not-found-page a {
+.not-found-page a,
+.custom__button {
    font-family: Arial, Helvetica, sans-serif;
    font-size: 15px;
-   color: #ffffff;
+   color: var(--text-link);
    padding: 10px 15px;
    background: -moz-linear-gradient(top, #42aaff 0%, #003366);
    background: -webkit-gradient(
@@ -29,7 +41,8 @@
 }
 
 .navigation a:hover,
-.not-found-page a:hover {
+.not-found-page a:hover,
+.custom__button {
    background: -moz-linear-gradient(top, #42aaff 0%, #0d5aa7);
    background: -webkit-gradient(
       linear,
@@ -42,7 +55,8 @@
 }
 
 .navigation a:active,
-.not-found-page a:active {
+.not-found-page a:active,
+.custom__button {
    background: -moz-linear-gradient(top, #003366 0%, #42aaff);
    background: -webkit-gradient(
       linear,
@@ -54,25 +68,31 @@
 }
 
 .app {
-   background-color: rgb(29, 54, 136);
-   color: burlywood;
+   background-color: var(--background-4);
+   color: var(--text-black);
    height: 100%;
 }
 
 .buyers-group {
    display: flex;
    justify-content: center;
-   /* padding-bottom: 500%; */
 }
 
 .buyersId {
    cursor: pointer;
-   color: #ffffff;
+	color: var(--text-white);
+}
+
+.buyersId:hover {
+	cursor: pointer;
+	color: burlywood;
+	text-decoration: none;
 }
 
 .buyers-page {
    height: 100%;
-   background-color: rgb(117, 115, 115);
+	background-color: var(--background-5);
+	color: var(--text-white);
 }
 
 .buyers-page__title {
@@ -100,20 +120,21 @@ button:focus {
 }
 
 .home-page {
-   background-color: rgb(91, 196, 117);
-   color: rgb(32, 41, 33);
+   background-color: var(--background-2);
+   color: var(--text-black);
    height: 100%;
 }
 
 .individual-buyer-page {
    height: 100%;
-   background-color: rgb(117, 115, 115);
+   background-color: var(--background-5);
 }
 
 .individual-buyer-page__title {
    padding-top: 20px;
    padding-bottom: 40px;
-   text-align: center;
+	text-align: center;
+	color: var(--text-white);
 }
 
 .navigation__item + .navigation__item {
@@ -125,7 +146,7 @@ button:focus {
    display: flex;
    justify-content: center;
    align-items: center;
-   background: #dad6cc;
+   background: var(--background-2);
    height: 100%;
 }
 
@@ -139,22 +160,22 @@ button:focus {
 
 .not-found-page__logo h1 {
    font-size: 200px;
-   color: #ff7a00;
+   color: var(--background-4);
    text-align: center;
    margin-bottom: 1px;
    text-shadow: 4px 4px 1px white;
 }
 
 .not-found-page__logo p {
-   color: #b1a18d;
+   color: var(--background-4);
    font-size: 20px;
    margin-top: 1px;
    text-align: center;
 }
 
 .not-found-page__sub a {
-   background: lightgreen;
-   color: #ff7a00;
+   background: var(--background-1);
+   color: var(--background-5);
    text-decoration: none;
    padding: 5px;
    font-size: 13px;
@@ -244,8 +265,8 @@ button:focus {
    flex-direction: column;
    justify-content: space-between;
    align-items: center;
-   background-color: rgb(109, 35, 35);
-   color: rgb(117, 170, 121);
+   background-color: var(--background-1);
+   color: var(--background-4);
 }
 
 .sidebar-content {
@@ -257,29 +278,61 @@ button:focus {
 }
 
 .sign-in-page {
-   display: flex;
+	display: flex;
+	height: 100vh;
    flex-wrap: wrap;
-   justify-content: center;
-   padding: 40px;
+	justify-content: center;
+	padding: 40px;
+	background-color: var(--background-2);
 }
 
 .sign-in-page h1 {
    text-align: center;
    padding-top: 40px;
    padding-bottom: 40px;
-   font-size: 2rem;
+	font-size: 2rem;
+	color: var(--text-black);
 }
 
 .sign-in-page__form {
-   width: 70%;
+	width: 70%;
+	padding-bottom: 100%;
 }
 
 .table-responsive {
    text-align: center;
 }
 
+.terminals-form {
+   width: 70%;
+   margin: 0 auto;
+}
+
+.custom__button {
+   display: block;
+	margin: 0 auto;
+	background-color: var(--background-4);
+}
+
+.terminals-page {
+	background-color: var(--background-5);
+	color: var(--text-white);
+   height: 100vh;
+}
+
+.terminals-page__title {
+   padding: 20px;
+	text-align: center;
+	color: var(--text-white);
+}
+
+.terminals-table {
+   width: 90%;
+   margin: 0 auto 50px;
+}
+
 .toggle-button {
-   display: none;
+	display: none;
    background-color: transparent;
    border: none;
    outline: none;
@@ -339,7 +392,8 @@ thead button {
    font-weight: 700;
    font-size: inherit;
    padding: 0.5em;
-   margin-bottom: 1px;
+	margin-bottom: 1px;
+	color: var(--background-5);
 }
 
 thead button.ascending::after {
@@ -374,7 +428,8 @@ tbody tr:hover {
    }
 
    .sidebar {
-      height: 100%;
+		height: 100%;
+		background-color: transparent;
    }
 
    .sidebar-content {
