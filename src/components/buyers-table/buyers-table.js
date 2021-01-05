@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useSorttableData } from "../../utils";
+import { Path } from "../../const";
+
 
 const BuyersTable = (props) => {
    const { items, requestSort, sortConfig } = useSorttableData(
@@ -67,11 +69,14 @@ const BuyersTable = (props) => {
                </tr>
             </thead>
             <tbody>
-               {items.map((item, index) => (
+               {items.map((item) => (
                   <tr key={item.id}>
                      <td>
-                        <Link to={`/buyers/${item.id}`} className="buyersId">
-                           {index + 1}
+                        <Link
+                           to={`${Path.BUYERS_INDIVIDUAL}${item.id}`}
+                           className="buyersId"
+                        >
+                           {item.id}
                         </Link>
                      </td>
                      <td>{item.name}</td>

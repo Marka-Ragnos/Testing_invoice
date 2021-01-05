@@ -8,6 +8,7 @@ import SignInPage from "../../pages/sign-in-page/sign-in-page";
 import IndividualBuyerPage from "../../pages/individual-buyer-page/individual-buyer-page";
 import TerminalsPage from "../../pages/terminals-page/terminals-page";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Path } from "../../const";
 
 const App = () => {
    return (
@@ -15,14 +16,24 @@ const App = () => {
          <BrowserRouter>
             <AppWrapper renderProp={Sidebar}>
                <Switch>
-                  <Route path="/" exact component={HomePage} />
-                  <Route path="/sign-in-page" exact component={SignInPage} />
-                  <Route path="/terminals-page" exact component={TerminalsPage} />
-                  <Route path="/buyers-page" exact component={BuyersPage} />
+                  <Route path={Path.MAIN} exact component={HomePage} />
+                  <Route path={Path.LOGIN} exact component={SignInPage} />
                   <Route
-                     path="/buyers/1"
+                     path={Path.TERMINALS}
                      exact
-                     component={IndividualBuyerPage}
+                     component={TerminalsPage}
+                  />
+                  <Route path={Path.BUYERS} exact component={BuyersPage} />
+                  <Route
+                     path={`${Path.BUYERS_INDIVIDUAL}:buyersId`}
+                     exact
+                     render={({
+                        match: {
+                           params: { buyersId },
+                        },
+                     }) => {
+                        return <IndividualBuyerPage id={Number(buyersId)} />;
+                     }}
                   />
                   <Route component={NotFoundPage} />
                </Switch>

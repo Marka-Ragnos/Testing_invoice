@@ -1,10 +1,15 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import archiveBuyers from "../../mocks/mocks";
+// import {filterIndividualBuyer} from "../../utils";
+// import { connect } from "react-redux";
+// import { getBuyerWithId } from "../../store/app/selectors";
+
 
 const individualBuyer = archiveBuyers[0];
 
-const IndividualBuyerPage = () => {
+const IndividualBuyerPage = ({id}) => {
+
    return (
       <div className="individual-buyer-page">
          <h1 className="individual-buyer-page__title">
@@ -34,4 +39,9 @@ const IndividualBuyerPage = () => {
    );
 };
 
+// const mapStateToProps = (state) => ({
+//    individualBuyer: getBuyerWithId(state, id),
+// });
+
 export default IndividualBuyerPage;
+// export default connect(mapStateToProps)(IndividualBuyerPage);
