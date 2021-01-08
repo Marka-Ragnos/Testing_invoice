@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Col } from "react-bootstrap";
 
-const BuyersSortGroup = () => {
+const BuyersSortGroup = ({ setCount }) => {
    return (
       <Form className="buyers-group">
          <Form.Row className="align-items-center">
@@ -18,11 +18,13 @@ const BuyersSortGroup = () => {
                   className="mr-sm-2"
                   id="inlineFormCustomSelect"
                   custom
+                  // value={"all"}
+                  onChange={(evt) => setCount(evt.target.value)}
                >
-                  <option value="0">select the number of buyers</option>
-                  <option value="1">Five</option>
-                  <option value="2">Ten</option>
-                  <option value="3">Fifteen</option>
+                  <option value="all">select the number of buyers</option>
+                  <option value="5">Five</option>
+                  <option value="10">Ten</option>
+                  <option value="15">Fifteen</option>
                </Form.Control>
             </Col>
          </Form.Row>

@@ -4,13 +4,19 @@ import { Link } from "react-router-dom";
 import { useSorttableData } from "../../utils";
 import { Path } from "../../const";
 
+const BuyersTable = ({ buyers, count, paginationCount }) => {
+   const { items, requestSort, sortConfig } = useSorttableData(buyers);
 
-const BuyersTable = (props) => {
-   const { items, requestSort, sortConfig } = useSorttableData(props.buyers);
-	const [textSearch, setSearch] = useState("");
-	
-	console.log(textSearch);
-	
+   const [textSearch, setSearch] = useState("");
+
+   const search = (items, term) => {
+      if (term.length === 0) {
+         return items;
+      }
+      return items.filter((item) => {
+         return item.name.toLowerCase().indexOf(term.toLowerCase()) > -1;
+      });
+   };
    const onSearchChange = (evt) => {
       setSearch(evt.target.value);
    };
@@ -21,6 +27,12 @@ const BuyersTable = (props) => {
       }
       return sortConfig.key === name ? sortConfig.direction : undefined;
    };
+
+   const visibleItems = search(items, textSearch);
+
+   const calculatedCount = (count === "all" && visibleItems.length) || count;
+
+   const step = paginationCount * count;
 
    return (
       <>
@@ -67,7 +79,7 @@ const BuyersTable = (props) => {
                </tr>
             </thead>
             <tbody>
-               {items.map((item) => (
+               {visibleItems.slice(step, calculatedCount).map((item) => (
                   <tr key={item.id}>
                      <td>
                         <Link

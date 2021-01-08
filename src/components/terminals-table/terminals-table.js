@@ -2,9 +2,19 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import { connect } from "react-redux";
 import { getTerminals } from "../../store/terminals/selectors";
+import { ActionCreator } from "../../store/terminals/terminals";
 
+const TerminalsTable = ({ terminals = [], deleteTerminal }) => {
+   const removeTerminal = (item) => {
+      const idx = terminals.findIndex((terminal) => terminal.id === item.id);
+      const newTerminals = [
+         ...terminals.slice(0, idx),
+         ...terminals.slice(idx + 1),
+      ];
 
-const TerminalsTable = ({ terminals = [] }) => {
+      deleteTerminal(newTerminals);
+   };
+
    return (
       <>
          <Table
@@ -30,7 +40,7 @@ const TerminalsTable = ({ terminals = [] }) => {
                         <button
                            className="terminals-table__button"
                            type="button"
-                           onClick={() => {}}
+                           onClick={() => removeTerminal(item)}
                         >
                            Удалить
                         </button>
@@ -49,10 +59,10 @@ const mapStateToProps = (state) => ({
    terminals: getTerminals(state),
 });
 
-// const mapDispatchToProps = (dispatch) => ({
-//    setTerminals: (terminal) => {
-//       dispatch(ActionCreator.setTerminals(terminal));
-//    },
-// });
+const mapDispatchToProps = (dispatch) => ({
+   deleteTerminal: (terminals) => {
+      dispatch(ActionCreator.deleteTerminal(terminals));
+   },
+});
 
-export default connect(mapStateToProps)(TerminalsTable);
+export default connect(mapStateToProps, mapDispatchToProps)(TerminalsTable);

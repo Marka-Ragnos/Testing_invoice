@@ -139,7 +139,7 @@ button:focus {
 
 .missing-buyer {
    width: 60%;
-	margin: 30% auto 200%;
+   margin: 30% auto 200%;
 }
 
 .navigation__item + .navigation__item {
@@ -284,7 +284,7 @@ button:focus {
 
 .sign-in-page {
    display: flex;
-   height: 100vh;
+   height: max-content;
    flex-wrap: wrap;
    justify-content: center;
    padding: 40px;
@@ -314,11 +314,14 @@ button:focus {
 }
 
 .terminals-table__td-with-button {
-	display: flex;
-	justify-content: space-around;
+   display: flex;
+   justify-content: space-around;
 }
+
 .terminals-table__button {
-	
+   padding: 5px 5px;
+   line-height: 1;
+   border-radius: 10px;
 }
 
 .custom__button {
@@ -330,7 +333,7 @@ button:focus {
 .terminals-page {
    background-color: var(--background-5);
    color: var(--text-white);
-   height: 100vh;
+   height: 100%;
 }
 
 .terminals-page__title {
@@ -465,6 +468,9 @@ tbody tr:hover {
       display: block;
       align-self: flex-end;
       margin-right: 20px;
+   }
+   .terminals-page {
+      height: max-content;
    }
 }
 

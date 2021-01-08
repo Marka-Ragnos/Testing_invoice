@@ -2,37 +2,47 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { ActionCreator } from "../../store/terminals/terminals";
-// import { getTerminals } from "../../store/terminals/selectors";
 import { uniqueID } from "../../utils";
+import { getTerminals } from "../../store/terminals/selectors";
 
-const TerminalsForm = ({ setTerminals }) => {
+const TerminalsForm = ({ setTerminal, terminals }) => {
    const [terminal, setInfo] = useState({ nameTerminal: "", description: "" });
 
-   console.log(terminal);
+	const addTerminal = () => {
+		terminal.id = uniqueID();
+		const newTerminal = [...terminals, terminal];
+		setTerminal(newTerminal);
+		setInfo({ nameTerminal: "", description: "" });
+	};
 
    const onChange = (evt) => {
       setInfo({ ...terminal, [evt.target.name]: evt.target.value });
    };
 
-	const addTerminal = () => {
-		terminal.id = uniqueID();
-		setTerminals(terminal);
-		console.log("Store", terminal);
+   const onSubmit = (evt) => {
+      evt.preventDefault();
+      addTerminal();
    };
 
    return (
-      <Form className="terminals-form">
+      <Form className="terminals-form" onSubmit={onSubmit}>
          <Form.Group>
             <Form.Label>Название терминала</Form.Label>
-            <Form.Control type="text" name="nameTerminal" onChange={onChange} />
+            <Form.Control
+               type="text"
+               name="nameTerminal"
+               value={terminal.nameTerminal}
+               onChange={onChange}
+            />
          </Form.Group>
          <Form.Group controlId="Textarea">
             <Form.Label>Описание терминала</Form.Label>
             <Form.Control
-               name="description"
-               onChange={onChange}
                as="textarea"
                rows={5}
+               name="description"
+               value={terminal.description}
+               onChange={onChange}
             />
          </Form.Group>
          <Button
@@ -40,20 +50,20 @@ const TerminalsForm = ({ setTerminals }) => {
             as="input"
             type="button"
             value="Добавить"
-            onClick={addTerminal}
+            onClick={onSubmit}
          />
       </Form>
    );
 };
 
-// const mapStateToProps = (state) => ({
-//    buyers: getBuyersWithTotal(state),
-// });
+const mapStateToProps = (state) => ({
+   terminals: getTerminals(state),
+});
 
 const mapDispatchToProps = (dispatch) => ({
-   setTerminals: (terminal) => {
-      dispatch(ActionCreator.setTerminals(terminal));
+   setTerminal: (terminal) => {
+      dispatch(ActionCreator.setTerminal(terminal));
    },
 });
 
-export default connect(null, mapDispatchToProps)(TerminalsForm);
+export default connect(mapStateToProps, mapDispatchToProps)(TerminalsForm);

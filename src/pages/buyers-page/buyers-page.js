@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { getBuyersWithTotal } from "../../store/buyers/selectors";
 import BuyersTable from "../../components/buyers-table/buyers-table";
@@ -6,12 +6,24 @@ import BuyersPagination from "../../components/buyers-pagination/buyers-paginati
 import BuyersSortGroup from "../../components/buyers-sort-group/buyers-sort-group";
 
 const BuyersPage = ({ buyers }) => {
+   const [count, setCount] = useState("all");
+   const [paginationCount, setPaginationCount] = useState(0);
+
    return (
       <div className="buyers-page">
          <h1 className="buyers-page__title">Покупатели</h1>
-         <BuyersTable buyers={buyers} />
-         <BuyersPagination />
-         <BuyersSortGroup />
+         <BuyersTable
+            count={count}
+            buyers={buyers}
+            paginationCount={paginationCount}
+         />
+         {Number(count) === 5 && (
+            <BuyersPagination
+               setPaginationCount={setPaginationCount}
+               paginationCount={paginationCount}
+            />
+         )}
+         <BuyersSortGroup setCount={setCount} />
       </div>
    );
 };
@@ -19,9 +31,5 @@ const BuyersPage = ({ buyers }) => {
 const mapStateToProps = (state) => ({
    buyers: getBuyersWithTotal(state),
 });
-
-// const mapDispatchToProps = (dispatch) => ({
-//    loadFavoriteOffers: () => dispatch(OffersOperation.loadFavoriteOffers()),
-// });
 
 export default connect(mapStateToProps)(BuyersPage);
