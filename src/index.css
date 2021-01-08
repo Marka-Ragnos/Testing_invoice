@@ -80,19 +80,19 @@
 
 .buyersId {
    cursor: pointer;
-	color: var(--text-white);
+   color: var(--text-white);
 }
 
 .buyersId:hover {
-	cursor: pointer;
-	color: burlywood;
-	text-decoration: none;
+   cursor: pointer;
+   color: burlywood;
+   text-decoration: none;
 }
 
 .buyers-page {
    height: 100%;
-	background-color: var(--background-5);
-	color: var(--text-white);
+   background-color: var(--background-5);
+   color: var(--text-white);
 }
 
 .buyers-page__title {
@@ -133,8 +133,13 @@ button:focus {
 .individual-buyer-page__title {
    padding-top: 20px;
    padding-bottom: 40px;
-	text-align: center;
-	color: var(--text-white);
+   text-align: center;
+   color: var(--text-white);
+}
+
+.missing-buyer {
+   width: 60%;
+	margin: 30% auto 200%;
 }
 
 .navigation__item + .navigation__item {
@@ -278,25 +283,25 @@ button:focus {
 }
 
 .sign-in-page {
-	display: flex;
-	height: 100vh;
+   display: flex;
+   height: 100vh;
    flex-wrap: wrap;
-	justify-content: center;
-	padding: 40px;
-	background-color: var(--background-2);
+   justify-content: center;
+   padding: 40px;
+   background-color: var(--background-2);
 }
 
 .sign-in-page h1 {
    text-align: center;
    padding-top: 40px;
    padding-bottom: 40px;
-	font-size: 2rem;
-	color: var(--text-black);
+   font-size: 2rem;
+   color: var(--text-black);
 }
 
 .sign-in-page__form {
-	width: 70%;
-	padding-bottom: 100%;
+   width: 70%;
+   padding-bottom: 100%;
 }
 
 .table-responsive {
@@ -308,22 +313,30 @@ button:focus {
    margin: 0 auto;
 }
 
+.terminals-table__td-with-button {
+	display: flex;
+	justify-content: space-around;
+}
+.terminals-table__button {
+	
+}
+
 .custom__button {
    display: block;
-	margin: 0 auto;
-	background-color: var(--background-4);
+   margin: 0 auto;
+   background-color: var(--background-4);
 }
 
 .terminals-page {
-	background-color: var(--background-5);
-	color: var(--text-white);
+   background-color: var(--background-5);
+   color: var(--text-white);
    height: 100vh;
 }
 
 .terminals-page__title {
    padding: 20px;
-	text-align: center;
-	color: var(--text-white);
+   text-align: center;
+   color: var(--text-white);
 }
 
 .terminals-table {
@@ -332,7 +345,7 @@ button:focus {
 }
 
 .toggle-button {
-	display: none;
+   display: none;
    background-color: transparent;
    border: none;
    outline: none;
@@ -392,8 +405,8 @@ thead button {
    font-weight: 700;
    font-size: inherit;
    padding: 0.5em;
-	margin-bottom: 1px;
-	color: var(--background-5);
+   margin-bottom: 1px;
+   color: var(--background-5);
 }
 
 thead button.ascending::after {
@@ -428,8 +441,8 @@ tbody tr:hover {
    }
 
    .sidebar {
-		height: 100%;
-		background-color: transparent;
+      height: 100%;
+      background-color: transparent;
    }
 
    .sidebar-content {

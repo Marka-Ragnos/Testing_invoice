@@ -2,7 +2,7 @@ import { ServerURL, Status } from "../../const";
 import { extend } from "../../utils";
 
 const initialState = {
-   authorizationStatus: Status.UNAUTHORIZED,
+   authorizationStatus: Status.AUTHORIZED,
    email: null,
 };
 

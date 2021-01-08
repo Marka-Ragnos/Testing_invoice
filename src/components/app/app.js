@@ -7,6 +7,7 @@ import AppWrapper from "./app-wrapper";
 import SignInPage from "../../pages/sign-in-page/sign-in-page";
 import IndividualBuyerPage from "../../pages/individual-buyer-page/individual-buyer-page";
 import TerminalsPage from "../../pages/terminals-page/terminals-page";
+import PrivateRoute from "../hoc/private-route";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { Path } from "../../const";
 
@@ -18,16 +19,20 @@ const App = () => {
                <Switch>
                   <Route path={Path.MAIN} exact component={HomePage} />
                   <Route path={Path.LOGIN} exact component={SignInPage} />
-                  <Route
+                  <PrivateRoute
                      path={Path.TERMINALS}
                      exact
-                     component={TerminalsPage}
+                     component={() => <TerminalsPage />}
                   />
-                  <Route path={Path.BUYERS} exact component={BuyersPage} />
-                  <Route
+                  <PrivateRoute
+                     path={Path.BUYERS}
+                     exact
+                     component={() => <BuyersPage />}
+                  />
+                  <PrivateRoute
                      path={`${Path.BUYERS_INDIVIDUAL}:buyersId`}
                      exact
-                     render={({
+                     component={({
                         match: {
                            params: { buyersId },
                         },

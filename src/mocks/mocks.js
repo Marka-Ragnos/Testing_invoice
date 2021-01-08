@@ -1,6 +1,6 @@
 import { getRandomInRange, uniqueID } from "../utils";
 
-const archiveBuyers = [
+const buyers = [
    {
       id: uniqueID(),
       name: `Anakin Skywalker`,
@@ -93,4 +93,4 @@ const archiveBuyers = [
    },
 ];
 
-export default archiveBuyers;
+export default buyers;

@@ -1,5 +1,8 @@
 import React from "react";
 import { Table } from "react-bootstrap";
+import { connect } from "react-redux";
+import { getTerminals } from "../../store/terminals/selectors";
+
 
 const TerminalsTable = ({ terminals = [] }) => {
    return (
@@ -14,7 +17,7 @@ const TerminalsTable = ({ terminals = [] }) => {
          >
             <thead>
                <tr>
-                  <th>№</th>
+                  <th>ID</th>
                   <th>Название</th>
                   <th>Описание</th>
                </tr>
@@ -22,7 +25,8 @@ const TerminalsTable = ({ terminals = [] }) => {
             <tbody>
                {terminals.map((item, index) => (
                   <tr key={index + Math.floor(Math.random())}>
-                     <td>
+                     <td className="terminals-table__td-with-button">
+                        {item.id}
                         <button
                            className="terminals-table__button"
                            type="button"
@@ -41,4 +45,14 @@ const TerminalsTable = ({ terminals = [] }) => {
    );
 };
 
-export default TerminalsTable;
+const mapStateToProps = (state) => ({
+   terminals: getTerminals(state),
+});
+
+// const mapDispatchToProps = (dispatch) => ({
+//    setTerminals: (terminal) => {
+//       dispatch(ActionCreator.setTerminals(terminal));
+//    },
+// });
+
+export default connect(mapStateToProps)(TerminalsTable);

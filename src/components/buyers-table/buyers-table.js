@@ -6,9 +6,7 @@ import { Path } from "../../const";
 
 
 const BuyersTable = (props) => {
-   const { items, requestSort, sortConfig } = useSorttableData(
-      props.archiveBuyers
-   );
+   const { items, requestSort, sortConfig } = useSorttableData(props.buyers);
 	const [textSearch, setSearch] = useState("");
 	
 	console.log(textSearch);

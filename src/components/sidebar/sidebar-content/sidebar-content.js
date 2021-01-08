@@ -1,13 +1,31 @@
 import React from "react";
 import { Container, Row, Col, Image, Nav } from "react-bootstrap";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { getAuthorizationStatus } from "../../../store/user/selectors";
+// import { NavigationList } from "../../../const";
+// import { Status } from "../../../const";
 
-const SidebarContent = ({ isOpen }) => {
+const SidebarContent = ({ isOpen, authorizationStatus }) => {
+   // const Navigation = () => {
+   //    return NavigationList.map((item) => {
+   //       if (authorizationStatus === Status.AUTHORIZED && item.private) {
+   //          return (
+   //             <NavLink className="navigation__item" to={item.path}>
+   //                {item.title}
+   //             </NavLink>
+   //          );
+   //       } else if (!item.private) {
+   //          <NavLink className="navigation__item" to={item.path}>
+   //             {item.title}
+   //          </NavLink>;
+   //       }
+   //    });
+   // };
+
    return (
       <Container
-         className={`sidebar-content ${
-            isOpen ? "sidebar-content--open" : ""
-         }`}
+         className={`sidebar-content ${isOpen ? "sidebar-content--open" : ""}`}
       >
          <Row className="justify-content-center avatar">
             <Col xs={5} md={8}>
@@ -19,11 +37,12 @@ const SidebarContent = ({ isOpen }) => {
             className="flex-column navigation"
             variant="pills"
          >
+				{/* {Navigation} */}
             <NavLink className="navigation__item" to="/">
                Главная
             </NavLink>
             <NavLink className="navigation__item" to="/sign-in-page">
-               Регистрация
+               Залогиниться
             </NavLink>
             <NavLink className="navigation__item" to="/terminals-page">
                Терминалы
@@ -37,4 +56,8 @@ const SidebarContent = ({ isOpen }) => {
    );
 };
 
-export default SidebarContent;
+const mapStateToProps = (state) => ({
+   authorizationStatus: getAuthorizationStatus(state),
+});
+
+export default connect(mapStateToProps)(SidebarContent);

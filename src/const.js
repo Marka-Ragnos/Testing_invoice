@@ -1,6 +1,8 @@
 export const NameSpace = {
    APP: `APP`,
    USER: `USER`,
+   BUYERS: `BUYERS`,
+   TERMINALS: `TERMINALS`,
 };
 
 export const Path = {
@@ -24,4 +26,27 @@ export const ServerURL = {
 export const Status = {
    AUTHORIZED: `AUTHORIZED`,
    UNAUTHORIZED: `UNAUTHORIZED`,
+};
+
+export const NavigationList = {
+   HOME: {
+      title: "Главная",
+      path: "/",
+      private: false,
+   },
+   LOGIN: {
+      title: "Залогиниться",
+      path: "/sign-in-page",
+      private: false,
+   },
+   TERMINALS: {
+      title: "Терминалы",
+      path: "/terminals-page",
+      private: true,
+   },
+   BUYERS: {
+      title: "Главная",
+      path: "/buyers-page",
+      private: true,
+   },
 };
