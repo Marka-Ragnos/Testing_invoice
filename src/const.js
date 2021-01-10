@@ -20,7 +20,7 @@ export const ServerResponseStatus = {
 };
 
 export const ServerURL = {
-   LOGIN: `/login`,
+   LOGIN: `https://api.github.com/users/`,
 };
 
 export const Status = {

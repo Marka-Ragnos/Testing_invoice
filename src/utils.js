@@ -5,7 +5,7 @@ export const getRandomInRange = (min, max) => {
 };
 
 export const uniqueID = () => {
-   return Math.floor(Math.random() * Date.now() / 100000000);
+   return Math.floor((Math.random() * Date.now()) / 100000000);
 };
 
 export const getTotal = (firstТumber, secondNumber) => {
@@ -46,13 +46,12 @@ export const useSorttableData = (items, config = null) => {
    return { items: sortedItems, requestSort, sortConfig };
 };
 
-export const addTotal = (arr) => arr.map((item, index) => {
-		const total = getTotal(item.check, item.purchases);
+export const addTotal = (arr) =>
+   arr.map((item, index) => {
+      const total = getTotal(item.check, item.purchases);
       item.total = total;
       return item;
-});
+   });
 
 export const extend = (target, update) => Object.assign({}, target, update);
 
-// export const filterIndividualBuyer = (arr, Id) =>
-//    arr.find(({ buyer }) => buyer.id === Id);
