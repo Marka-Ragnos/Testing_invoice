@@ -30,7 +30,7 @@ const TerminalsTable = ({ terminals, deleteTerminal }) => {
                         <button
                            className="terminals-table__button"
                            type="button"
-                           onClick={() => deleteTerminal(terminals, item.id)}
+                           onClick={() => deleteTerminal(item.id)}
                         >
                            Удалить
                         </button>
@@ -50,8 +50,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-   deleteTerminal: (terminals, terminalId) => {
-      dispatch(ActionCreator.deleteTerminal(terminals, terminalId));
+   deleteTerminal: (terminalId) => {
+      dispatch(ActionCreator.deleteTerminal(terminalId));
    },
 });
 

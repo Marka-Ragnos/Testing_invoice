@@ -14,9 +14,9 @@ export const ActionCreator = {
       type: ActionType.SET_TERMINAL,
       payload: terminals,
    }),
-   deleteTerminal: (terminals, terminalId) => ({
+   deleteTerminal: (terminalId) => ({
       type: ActionType.DELETE_TERMINAL,
-      payload: removeItem(terminals, terminalId),
+      payload: terminalId,
    }),
 };
 
@@ -25,7 +25,9 @@ export const reducer = (state = initialState, action) => {
       case ActionType.SET_TERMINAL:
          return extend(state, { terminals: action.payload });
       case ActionType.DELETE_TERMINAL:
-         return extend(state, { terminals: action.payload });
+         return extend(state, {
+            terminals: removeItem(state.terminals, action.payload),
+         });
       default:
          return state;
    }
