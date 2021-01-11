@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Col } from "react-bootstrap";
 import { connect } from "react-redux";
+import { Form, Button, Col } from "react-bootstrap";
 import { Status } from "../../const";
 import { ActionCreator as UserActionCreator } from "../../store/user/user";
 import API from "../../api";
 
-const SignInPage = ({ setGitHubData, setAuthorizationStatus, setAvatar }) => {
+const SignInPage = ({ setGitHubData, setAuthorizationStatus }) => {
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [emailDirty, setEmailDirty] = useState(false);

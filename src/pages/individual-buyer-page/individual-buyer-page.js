@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getIndividualBuyer } from "../../store/buyers/selectors";
 import { Table, Jumbotron } from "react-bootstrap";
+import { getIndividualBuyer } from "../../store/buyers/selectors";
 
 const IndividualBuyerPage = ({ individualBuyer }) => {
    if (!individualBuyer) {

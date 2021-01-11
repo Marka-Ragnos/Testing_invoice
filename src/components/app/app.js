@@ -1,4 +1,6 @@
 import React from "react";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Path } from "../../const";
 import Sidebar from "../sidebar/sidebar";
 import HomePage from "../../pages/home-page/home-page";
 import BuyersPage from "../../pages/buyers-page/buyers-page";
@@ -9,8 +11,6 @@ import IndividualBuyerPage from "../../pages/individual-buyer-page/individual-bu
 import TerminalsPage from "../../pages/terminals-page/terminals-page";
 import PrivateRoute from "../hoc/private-route";
 import PrivateRouteLogged from "../hoc/private-route-logged";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
-import { Path } from "../../const";
 
 const App = () => {
    return (

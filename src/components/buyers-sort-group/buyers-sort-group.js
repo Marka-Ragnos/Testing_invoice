@@ -18,7 +18,6 @@ const BuyersSortGroup = ({ setCount }) => {
                   className="mr-sm-2"
                   id="inlineFormCustomSelect"
                   custom
-                  // value={"all"}
                   onChange={(evt) => setCount(evt.target.value)}
                >
                   <option value="all">select the number of buyers</option>

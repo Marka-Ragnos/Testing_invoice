@@ -1,8 +1,8 @@
 import React from "react";
-import { Table } from "react-bootstrap";
 import { connect } from "react-redux";
+import { Table } from "react-bootstrap";
 import { getTerminals } from "../../store/terminals/selectors";
-import { ActionCreator } from "../../store/terminals/terminals";
+import { ActionCreator as TerminalsActionCreator } from "../../store/terminals/terminals";
 
 const TerminalsTable = ({ terminals, deleteTerminal }) => {
    return (
@@ -51,7 +51,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
    deleteTerminal: (terminalId) => {
-      dispatch(ActionCreator.deleteTerminal(terminalId));
+      dispatch(TerminalsActionCreator.deleteTerminal(terminalId));
    },
 });
 

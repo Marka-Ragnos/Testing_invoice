@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { getAuthorizationStatus } from "../../store/user/selectors";
 import { Path, Status } from "../../const";
+import { getAuthorizationStatus } from "../../store/user/selectors";
 
 const PrivateRouteLogged = ({
    component: Component,

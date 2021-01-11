@@ -210,10 +210,10 @@ button:focus {
 }
 
 @media (max-width: 768px) {
-	.copyright{
-		color: var(--text-black);
-		padding-bottom: 20px;
-	}
+   .copyright {
+      color: var(--text-black);
+      padding-bottom: 20px;
+   }
 
    .not-found-page {
       display: -webkit-flex;
@@ -295,7 +295,7 @@ button:focus {
 
 .sign-in-page {
    display: flex;
-   height: max-content;
+   height: 100%;
    flex-wrap: wrap;
    justify-content: center;
    padding: 40px;

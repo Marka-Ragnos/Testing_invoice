@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Row, Col, Image, Nav } from "react-bootstrap";
 import { connect } from "react-redux";
+import { Container, Row, Col, Image, Nav } from "react-bootstrap";
 import { getAvatar } from "../../../store/user/selectors";
 import Navigation from "../../navigation/navigation";
 

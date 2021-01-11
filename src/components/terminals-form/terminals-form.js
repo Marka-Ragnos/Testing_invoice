@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { ActionCreator } from "../../store/terminals/terminals";
+import { Form, Button } from "react-bootstrap";
 import { uniqueID } from "../../utils";
+import { ActionCreator as TerminalsActionCreator } from "../../store/terminals/terminals";
 import { getTerminals } from "../../store/terminals/selectors";
 
 const TerminalsForm = ({ setTerminal, terminals }) => {
@@ -62,7 +62,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
    setTerminal: (terminal) => {
-      dispatch(ActionCreator.setTerminal(terminal));
+      dispatch(TerminalsActionCreator.setTerminal(terminal));
    },
 });
 
