@@ -7,7 +7,9 @@ import BuyersSortGroup from "../../components/buyers-sort-group/buyers-sort-grou
 
 const BuyersPage = ({ buyers }) => {
    const [count, setCount] = useState("all");
-   const [paginationCount, setPaginationCount] = useState(0);
+   const [paginationCount, setPaginationCount] = useState(1);
+   const paginationLength =
+      buyers.length > count ? Math.ceil(buyers.length / count) : false;
 
    return (
       <div className="buyers-page">
@@ -17,10 +19,11 @@ const BuyersPage = ({ buyers }) => {
             buyers={buyers}
             paginationCount={paginationCount}
          />
-         {Number(count) === 5 && (
+         {paginationLength && (
             <BuyersPagination
                setPaginationCount={setPaginationCount}
                paginationCount={paginationCount}
+               length={paginationLength}
             />
          )}
          <BuyersSortGroup setCount={setCount} />

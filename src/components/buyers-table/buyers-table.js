@@ -13,12 +13,12 @@ const BuyersTable = ({ buyers, count, paginationCount }) => {
       setSearch(evt.target.value);
    };
 
-
    const visibleItems = search(items, textSearch);
 
-   const calculatedCount = (count === "all" && visibleItems.length) || count;
+	const step = paginationCount === 1 ? 0 : (paginationCount * count) - count;
+	
+   const calculatedCount = (count === "all" && visibleItems.length) || step + Number(count);
 
-   const step = paginationCount * count;
 
    return (
       <>

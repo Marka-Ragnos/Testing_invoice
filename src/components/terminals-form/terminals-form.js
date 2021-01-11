@@ -8,12 +8,12 @@ import { getTerminals } from "../../store/terminals/selectors";
 const TerminalsForm = ({ setTerminal, terminals }) => {
    const [terminal, setInfo] = useState({ nameTerminal: "", description: "" });
 
-	const addTerminal = () => {
-		terminal.id = uniqueID();
-		const newTerminal = [...terminals, terminal];
-		setTerminal(newTerminal);
-		setInfo({ nameTerminal: "", description: "" });
-	};
+   const addTerminal = () => {
+      terminal.id = uniqueID();
+      const newTerminal = [...terminals, terminal];
+      setTerminal(newTerminal);
+      setInfo({ nameTerminal: "", description: "" });
+   };
 
    const onChange = (evt) => {
       setInfo({ ...terminal, [evt.target.name]: evt.target.value });

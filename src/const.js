@@ -14,11 +14,6 @@ export const Path = {
    NOT_FOUND: `/not-found-page`,
 };
 
-export const ServerResponseStatus = {
-   OK: 200,
-   UNAUTHORIZED: 401,
-};
-
 export const ServerURL = {
    LOGIN: `https://api.github.com/users/`,
 };
@@ -45,7 +40,7 @@ export const NavigationList = {
       private: true,
    },
    BUYERS: {
-      title: "Главная",
+      title: "Покупатели",
       path: "/buyers-page",
       private: true,
    },

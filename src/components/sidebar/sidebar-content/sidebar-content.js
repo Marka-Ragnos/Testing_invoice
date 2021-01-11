@@ -1,34 +1,11 @@
 import React from "react";
 import { Container, Row, Col, Image, Nav } from "react-bootstrap";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { getAuthorizationStatus } from "../../../store/user/selectors";
 import { getAvatar } from "../../../store/user/selectors";
-// import { NavigationList } from "../../../const";
-// import { Status } from "../../../const";
+import Navigation from "../../navigation/navigation";
 
-const SidebarContent = ({
-   isOpen,
-   avatar,
-   authorizationStatus,
-}) => {
-   // const Navigation = () => {
-   //    return NavigationList.map((item) => {
-   //       if (authorizationStatus === Status.AUTHORIZED && item.private) {
-   //          return (
-   //             <NavLink className="navigation__item" to={item.path}>
-   //                {item.title}
-   //             </NavLink>
-   //          );
-   //       } else if (!item.private) {
-   //          <NavLink className="navigation__item" to={item.path}>
-   //             {item.title}
-   //          </NavLink>;
-   //       }
-   //    });
-   // };
-
-	return (
+const SidebarContent = ({ isOpen, avatar }) => {
+   return (
       <Container
          className={`sidebar-content ${isOpen ? "sidebar-content--open" : ""}`}
       >
@@ -42,19 +19,7 @@ const SidebarContent = ({
             className="flex-column navigation"
             variant="pills"
          >
-            {/* {Navigation} */}
-            <NavLink className="navigation__item" to="/">
-               Главная
-            </NavLink>
-            <NavLink className="navigation__item" to="/sign-in-page">
-               Залогиниться
-            </NavLink>
-            <NavLink className="navigation__item" to="/terminals-page">
-               Терминалы
-            </NavLink>
-            <NavLink className="navigation__item" to="/buyers-page">
-               Покупатели
-            </NavLink>
+            <Navigation />
          </Nav>
          <span className="copyright">Copyright &#169; 2020</span>
       </Container>
@@ -62,7 +27,6 @@ const SidebarContent = ({
 };
 
 const mapStateToProps = (state) => ({
-   authorizationStatus: getAuthorizationStatus(state),
    avatar: getAvatar(state),
 });
 

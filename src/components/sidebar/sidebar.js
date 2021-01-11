@@ -6,7 +6,7 @@ const Sidebar = () => {
    const [isOpen, toggleMenu] = useState(false);
 
    return (
-      <div className="sidebar py-3">
+      <div className="sidebar">
          <ToggleButton toggleMenu={toggleMenu} isOpen={isOpen} />
          <SidebarContent isOpen={isOpen} />
       </div>

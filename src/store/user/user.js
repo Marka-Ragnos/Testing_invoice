@@ -2,7 +2,7 @@ import { Status } from "../../const";
 import { extend } from "../../utils";
 
 const initialState = {
-   authorizationStatus: Status.AUTHORIZED,
+   authorizationStatus: Status.UNAUTHORIZED,
    gitHubData: {},
 };
 
@@ -24,7 +24,7 @@ export const reducer = (state = initialState, action) => {
       case ActionType.SET_AUTHORIZATION_STATUS:
          return extend(state, { authorizationStatus: action.payload });
       case ActionType.SET_GIT_HUB_DATA:
-         return extend(state, { email: action.payload });
+         return extend(state, { gitHubData: action.payload });
       default:
          return state;
    }

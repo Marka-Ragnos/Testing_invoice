@@ -8,6 +8,7 @@ import SignInPage from "../../pages/sign-in-page/sign-in-page";
 import IndividualBuyerPage from "../../pages/individual-buyer-page/individual-buyer-page";
 import TerminalsPage from "../../pages/terminals-page/terminals-page";
 import PrivateRoute from "../hoc/private-route";
+import PrivateRouteLogged from "../hoc/private-route-logged";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { Path } from "../../const";
 
@@ -18,16 +19,20 @@ const App = () => {
             <AppWrapper renderProp={Sidebar}>
                <Switch>
                   <Route path={Path.MAIN} exact component={HomePage} />
-                  <Route path={Path.LOGIN} exact component={SignInPage} />
+                  <PrivateRouteLogged
+                     path={Path.LOGIN}
+                     exact
+                     component={SignInPage}
+                  />
                   <PrivateRoute
                      path={Path.TERMINALS}
                      exact
-                     component={() => <TerminalsPage />}
+                     component={TerminalsPage}
                   />
                   <PrivateRoute
                      path={Path.BUYERS}
                      exact
-                     component={() => <BuyersPage />}
+                     component={BuyersPage}
                   />
                   <PrivateRoute
                      path={`${Path.BUYERS_INDIVIDUAL}:buyersId`}
