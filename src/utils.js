@@ -70,3 +70,10 @@ export const getClassNamesFor = (name, sortConfig) => {
    }
    return sortConfig.key === name ? sortConfig.direction : undefined;
 };
+
+export const removeItem = (arr, id) => {
+   const idx = arr.findIndex((item) => item.id === id);
+   const newArr = [...arr.slice(0, idx), ...arr.slice(idx + 1)];
+
+   return newArr;
+};

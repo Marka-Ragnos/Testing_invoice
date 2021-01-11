@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Col } from "react-bootstrap";
-import api from "../../api";
 import { connect } from "react-redux";
-import { ActionCreator as UserActionCreator } from "../../store/user/user";
-import { ActionCreator as AppActionCreator } from "../../store/app/app";
 import { Status } from "../../const";
-import { convertUserFromServerFormat } from "../../adapters";
-
+import { ActionCreator as UserActionCreator } from "../../store/user/user";
+import API from "../../api";
 
 const SignInPage = ({ setGitHubData, setAuthorizationStatus, setAvatar }) => {
    const [email, setEmail] = useState("");
@@ -64,21 +61,24 @@ const SignInPage = ({ setGitHubData, setAuthorizationStatus, setAvatar }) => {
       }
    };
 
-   const API = new api();
+   const api = new API();
    const handleSubmit = (evt) => {
       evt.preventDefault();
-      API.loginUser(email).then((res) => {
-         // if (res.message && res.message === "Not Found") {
-         //    alert("Wrong credentials");
-			// }
-         setGitHubData(convertUserFromServerFormat(res));
-         setEmail("");
-         setPassword("");
-         setAuthorizationStatus(Status.AUTHORIZED);
+      api.loginUser(email).then((res) => {
+         if (res.message && res.message === "Not Found") {
+            setEmail("");
+            setPassword("");
+            alert("Wrong credentials");
+         } else {
+            setGitHubData(res);
+            setEmail("");
+            setPassword("");
+            setAuthorizationStatus(Status.AUTHORIZED);
+         }
       });
    };
 
-	return (
+   return (
       <div className="sign-in-page">
          <h1>You are not logged in, please register</h1>
          <Form className="sign-in-page__form" onSubmit={handleSubmit}>
@@ -86,9 +86,9 @@ const SignInPage = ({ setGitHubData, setAuthorizationStatus, setAvatar }) => {
                <Form.Group className="sign-in-page__form-item" as={Col} md="6">
                   <Form.Label>Username</Form.Label>
                   <Form.Control
-                     onChange={(evt) => emailHandler(evt)}
+                     onChange={emailHandler}
                      value={email}
-                     onBlur={(evt) => blurHandler(evt)}
+                     onBlur={blurHandler}
                      name="email"
                      type="text"
                      placeholder="Enter username"
@@ -101,9 +101,9 @@ const SignInPage = ({ setGitHubData, setAuthorizationStatus, setAvatar }) => {
                <Form.Group className="sign-in-page__form-item" as={Col} md="6">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
-                     onChange={(evt) => passwordHandler(evt)}
+                     onChange={passwordHandler}
                      value={password}
-                     onBlur={(evt) => blurHandler(evt)}
+                     onBlur={blurHandler}
                      name="password"
                      type="password"
                      placeholder="Enter password"
@@ -136,9 +136,6 @@ const SignInPage = ({ setGitHubData, setAuthorizationStatus, setAvatar }) => {
 const mapDispatchToProps = (dispatch) => ({
    setGitHubData: (data) => {
       dispatch(UserActionCreator.setGitHubData(data));
-   },
-   setAvatar: (avatar) => {
-      dispatch(AppActionCreator.setAvatar(avatar));
    },
    setAuthorizationStatus: (authorizationStatus) => {
       dispatch(UserActionCreator.setAuthorizationStatus(authorizationStatus));

@@ -4,17 +4,7 @@ import { connect } from "react-redux";
 import { getTerminals } from "../../store/terminals/selectors";
 import { ActionCreator } from "../../store/terminals/terminals";
 
-const TerminalsTable = ({ terminals = [], deleteTerminal }) => {
-   const removeTerminal = (item) => {
-      const idx = terminals.findIndex((terminal) => terminal.id === item.id);
-      const newTerminals = [
-         ...terminals.slice(0, idx),
-         ...terminals.slice(idx + 1),
-      ];
-
-      deleteTerminal(newTerminals);
-   };
-
+const TerminalsTable = ({ terminals, deleteTerminal }) => {
    return (
       <>
          <Table
@@ -40,7 +30,7 @@ const TerminalsTable = ({ terminals = [], deleteTerminal }) => {
                         <button
                            className="terminals-table__button"
                            type="button"
-                           onClick={() => removeTerminal(item)}
+                           onClick={() => deleteTerminal(terminals, item.id)}
                         >
                            Удалить
                         </button>
@@ -60,8 +50,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-   deleteTerminal: (terminals) => {
-      dispatch(ActionCreator.deleteTerminal(terminals));
+   deleteTerminal: (terminals, terminalId) => {
+      dispatch(ActionCreator.deleteTerminal(terminals, terminalId));
    },
 });
 

@@ -1,4 +1,4 @@
-import { extend } from "../../utils";
+import { extend, removeItem } from "../../utils";
 
 const initialState = {
    terminals: [],
@@ -14,9 +14,9 @@ export const ActionCreator = {
       type: ActionType.SET_TERMINAL,
       payload: terminals,
    }),
-   deleteTerminal: (terminals) => ({
+   deleteTerminal: (terminals, terminalId) => ({
       type: ActionType.DELETE_TERMINAL,
-      payload: terminals,
+      payload: removeItem(terminals, terminalId),
    }),
 };
 

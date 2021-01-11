@@ -1,5 +1,6 @@
 import { Status } from "../../const";
 import { extend } from "../../utils";
+import { convertUserFromServerFormat } from "../../adapters";
 
 const initialState = {
    authorizationStatus: Status.UNAUTHORIZED,
@@ -16,7 +17,10 @@ export const ActionCreator = {
       type: ActionType.SET_AUTHORIZATION_STATUS,
       payload: authorizationStatus,
    }),
-   setGitHubData: (data) => ({ type: ActionType.SET_GIT_HUB_DATA, payload: data }),
+   setGitHubData: (data) => ({
+      type: ActionType.SET_GIT_HUB_DATA,
+      payload: convertUserFromServerFormat(data),
+   }),
 };
 
 export const reducer = (state = initialState, action) => {
