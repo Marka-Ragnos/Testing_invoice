@@ -27,8 +27,8 @@ const SidebarContent = ({
    //       }
    //    });
    // };
-console.log(avatar);
-   return (
+
+	return (
       <Container
          className={`sidebar-content ${isOpen ? "sidebar-content--open" : ""}`}
       >

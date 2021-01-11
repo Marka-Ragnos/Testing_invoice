@@ -1,15 +1,22 @@
 import { useState, useMemo } from "react";
 
+const getTotal = (firstТumber, secondNumber) => {
+   return Math.floor(firstТumber * secondNumber);
+};
+
+export const addTotal = (arr) =>
+   arr.map((item) => {
+      const total = getTotal(item.check, item.purchases);
+      item.total = total;
+      return item;
+   });
+
 export const getRandomInRange = (min, max) => {
    return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 export const uniqueID = () => {
    return Math.floor((Math.random() * Date.now()) / 100000000);
-};
-
-export const getTotal = (firstТumber, secondNumber) => {
-   return Math.floor(firstТumber * secondNumber);
 };
 
 export const useSorttableData = (items, config = null) => {
@@ -46,12 +53,20 @@ export const useSorttableData = (items, config = null) => {
    return { items: sortedItems, requestSort, sortConfig };
 };
 
-export const addTotal = (arr) =>
-   arr.map((item, index) => {
-      const total = getTotal(item.check, item.purchases);
-      item.total = total;
-      return item;
-   });
-
 export const extend = (target, update) => Object.assign({}, target, update);
 
+export const search = (items, term) => {
+   if (term.length === 0) {
+      return items;
+   }
+   return items.filter((item) => {
+      return item.name.toLowerCase().indexOf(term.toLowerCase()) > -1;
+   });
+};
+
+export const getClassNamesFor = (name, sortConfig) => {
+   if (!sortConfig) {
+      return;
+   }
+   return sortConfig.key === name ? sortConfig.direction : undefined;
+};

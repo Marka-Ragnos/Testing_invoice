@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { getBuyersWithTotal } from "../../store/buyers/selectors";
+import { getBuyers } from "../../store/buyers/selectors";
 import BuyersTable from "../../components/buyers-table/buyers-table";
 import BuyersPagination from "../../components/buyers-pagination/buyers-pagination";
 import BuyersSortGroup from "../../components/buyers-sort-group/buyers-sort-group";
@@ -29,7 +29,7 @@ const BuyersPage = ({ buyers }) => {
 };
 
 const mapStateToProps = (state) => ({
-   buyers: getBuyersWithTotal(state),
+   buyers: getBuyers(state),
 });
 
 export default connect(mapStateToProps)(BuyersPage);

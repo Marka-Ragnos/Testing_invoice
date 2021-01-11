@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useSorttableData } from "../../utils";
+import { useSorttableData, search, getClassNamesFor } from "../../utils";
 import { Path } from "../../const";
 
 const BuyersTable = ({ buyers, count, paginationCount }) => {
@@ -9,24 +9,10 @@ const BuyersTable = ({ buyers, count, paginationCount }) => {
 
    const [textSearch, setSearch] = useState("");
 
-   const search = (items, term) => {
-      if (term.length === 0) {
-         return items;
-      }
-      return items.filter((item) => {
-         return item.name.toLowerCase().indexOf(term.toLowerCase()) > -1;
-      });
-   };
    const onSearchChange = (evt) => {
       setSearch(evt.target.value);
    };
 
-   const getClassNamesFor = (name) => {
-      if (!sortConfig) {
-         return;
-      }
-      return sortConfig.key === name ? sortConfig.direction : undefined;
-   };
 
    const visibleItems = search(items, textSearch);
 
@@ -53,7 +39,7 @@ const BuyersTable = ({ buyers, count, paginationCount }) => {
                      <button
                         type="button"
                         onClick={() => requestSort("check")}
-                        className={getClassNamesFor("check")}
+                        className={getClassNamesFor("check", sortConfig)}
                      >
                         Средний чек
                      </button>
@@ -62,7 +48,7 @@ const BuyersTable = ({ buyers, count, paginationCount }) => {
                      <button
                         type="button"
                         onClick={() => requestSort("purchases")}
-                        className={getClassNamesFor("purchases")}
+                        className={getClassNamesFor("purchases", sortConfig)}
                      >
                         Количество покупок
                      </button>
@@ -71,7 +57,7 @@ const BuyersTable = ({ buyers, count, paginationCount }) => {
                      <button
                         type="button"
                         onClick={() => requestSort("total")}
-                        className={getClassNamesFor("total")}
+                        className={getClassNamesFor("total", sortConfig)}
                      >
                         Общая выручка
                      </button>
