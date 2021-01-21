@@ -8,21 +8,16 @@ import { ActionCreator as UserActionCreator } from "../../store/user/user";
 
 const Navigation = ({ authorizationStatus, setAuthorizationStatus, setGitHubData }) => {
 
-   const checkLoginPrivate = (arr, authorizationStatus) => {
-      if (authorizationStatus === Status.AUTHORIZED) { arr.LOGIN.private = true } else { arr.LOGIN.private = false }
-      return arr;
-   }
-
    const actionExit = (authStatus, gitHubData) => {
       setAuthorizationStatus(authStatus);
       setGitHubData(gitHubData);
    }
 
-   const currentNavigation = Object.values(checkLoginPrivate(NavigationList, authorizationStatus)).filter(
-      (item) => !(item.private && authorizationStatus === Status.UNAUTHORIZED)
-   );
-   
-      console.log(currentNavigation, authorizationStatus);
+   const currentNavigation = Object.values(NavigationList).filter(
+   (item) => {
+      return item.title === 'Главная' || item.private === (authorizationStatus === Status.AUTHORIZED);
+   }
+);
 
    return currentNavigation.map((item, index) => (
       item.title === "Выход" ? 
