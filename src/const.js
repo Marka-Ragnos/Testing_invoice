@@ -44,4 +44,9 @@ export const NavigationList = {
       path: "/buyers-page",
       private: true,
    },
+   EXIT: {
+      title: "Выход",
+      path: "/",
+      private: true,
+   }
 };
